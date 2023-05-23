@@ -2,7 +2,8 @@ CC = cc
 CFLAGS = -Wall -Werror -Wextra
 NAME = push_swap
 
-SOURCES = ./src/push_swap.c ./src/utils.c ./src/input_checks.c
+SOURCES = ./src/push_swap.c ./src/utils.c ./src/input_checks.c ./src/stack_funcs.c ./src/rotate_both_and_push.c \
+./src/swap_rules.c ./src/rotate_one_rules.c
 
 OBJECTS = $(SOURCES:.c=.o)
 
