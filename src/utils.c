@@ -6,7 +6,7 @@
 /*   By: njantsch <njantsch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 14:32:11 by njantsch          #+#    #+#             */
-/*   Updated: 2023/05/23 16:45:20 by njantsch         ###   ########.fr       */
+/*   Updated: 2023/05/24 16:15:28 by njantsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,10 @@ int	get_stack_size(char	**numbrs)
 {
 	int	i;
 
-	i = 1;
+	i = 0;
 	while (numbrs[i])
 		i++;
-	return (i);
+	return (i - 1);
 }
 
 int	get_stack_size_str(char **numbrs)

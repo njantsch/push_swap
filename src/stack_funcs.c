@@ -6,7 +6,7 @@
 /*   By: njantsch <njantsch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 14:33:14 by njantsch          #+#    #+#             */
-/*   Updated: 2023/05/23 16:06:07 by njantsch         ###   ########.fr       */
+/*   Updated: 2023/05/24 16:17:08 by njantsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,17 +22,17 @@ stack	*strct_init_a(char **numbrs)
 		return (NULL);
 	s->top = -1;
 	s->size = get_stack_size(numbrs);
-	i = s->size;
+	i = s->size + 1;
 	s->items = malloc(sizeof(int) * s->size);
 	if (!s->items)
 	{
 		free(s);
 		return (NULL);
 	}
-	while (i >= 0)
+	while (i > 1)
 	{
 		s->top++;
-		s->items[s->top] = ft_atoi(numbrs[i]);
+		s->items[s->top] = ft_atoi(numbrs[i - 1]);
 		i--;
 	}
 	return (s);
@@ -57,10 +57,10 @@ stack	*strct_init_str_a(char **numbrs)
 		free(s);
 		return (NULL);
 	}
-	while (i >= 0)
+	while (i > 0)
 	{
 		s->top++;
-		s->items[s->top] = ft_atoi(buff[i]);
+		s->items[s->top] = ft_atoi(buff[i - 1]);
 		i--;
 	}
 	free_prev_alloc(buff);

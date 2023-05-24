@@ -6,7 +6,7 @@
 /*   By: njantsch <njantsch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 16:59:48 by njantsch          #+#    #+#             */
-/*   Updated: 2023/05/23 17:59:00 by njantsch         ###   ########.fr       */
+/*   Updated: 2023/05/24 12:18:18 by njantsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,4 +46,40 @@ void	rb(stack *s)
 	}
 	s->items[0] = tmp;
 	ft_printf("rb\n");
+}
+
+void	rra(stack *s)
+{
+	int	tmp;
+	int	i;
+
+	if (s->top < 1)
+		return;
+	tmp = s->items[0];
+	i = 0;
+	while (i < s->top)
+	{
+		s->items[i] = s->items[i + 1];
+		i++;
+	}
+	s->items[s->top] = tmp;
+	ft_printf("rra\n");
+}
+
+void	rrb(stack *s)
+{
+	int	tmp;
+	int	i;
+
+	if (s->top < 1)
+		return;
+	tmp = s->items[0];
+	i = 0;
+	while (i < s->top)
+	{
+		s->items[i] = s->items[i + 1];
+		i++;
+	}
+	s->items[s->top] = tmp;
+	ft_printf("rrb\n");
 }

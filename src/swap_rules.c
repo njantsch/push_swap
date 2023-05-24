@@ -6,7 +6,7 @@
 /*   By: njantsch <njantsch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 19:17:47 by njantsch          #+#    #+#             */
-/*   Updated: 2023/05/23 17:10:15 by njantsch         ###   ########.fr       */
+/*   Updated: 2023/05/24 16:19:39 by njantsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	sa(stack *s)
 	tmp = s->items[s->top];
 	s->items[s->top] = s->items[s->top - 1];
 	s->items[s->top - 1] = tmp;
-	printf("sa\n");
+	ft_printf("sa\n");
 }
 
 void	sb(stack *s)
@@ -33,7 +33,7 @@ void	sb(stack *s)
 	tmp = s->items[s->top];
 	s->items[s->top] = s->items[s->top - 1];
 	s->items[s->top - 1] = tmp;
-	printf("sb\n");
+	ft_printf("sb\n");
 }
 
 void	ss(stack *s_a, stack *s_b)
