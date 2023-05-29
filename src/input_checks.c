@@ -6,7 +6,7 @@
 /*   By: njantsch <njantsch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 17:01:52 by njantsch          #+#    #+#             */
-/*   Updated: 2023/05/29 13:50:31 by njantsch         ###   ########.fr       */
+/*   Updated: 2023/05/29 16:02:23 by njantsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ bool	ft_checks(int args, char **num)
 		return (false);
 	if (ft_not_int(num) == false)
 		return (false);
-	if (ft_is_sorted(num) == false)
+	if (ft_is_sorted(num) == true)
 		return (false);
 	return (true);
 }
@@ -113,10 +113,10 @@ bool	ft_is_sorted(char **num)
 		if (nums[i] > nums[i + 1] && nums[i + 1] != '\0')
 		{
 			free(nums);
-			return (true);
+			return (false);
 		}
 		i++;
 	}
 	free(nums);
-	return (false);
+	return (true);
 }
