@@ -6,7 +6,7 @@
 /*   By: njantsch <njantsch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 13:05:22 by njantsch          #+#    #+#             */
-/*   Updated: 2023/04/03 18:39:58 by njantsch         ###   ########.fr       */
+/*   Updated: 2023/05/29 13:58:41 by njantsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,11 @@ static int	word_count(char const *str, char sep)
 {
 	int	i;
 	int	count;
-	int	len;
 
 	if (!str)
 		return (0);
 	i = 0;
 	count = 0;
-	len = ft_strlen(str);
 	while (str[i])
 	{
 		if (str[i] != sep)

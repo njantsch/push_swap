@@ -6,11 +6,36 @@
 /*   By: njantsch <njantsch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 14:32:11 by njantsch          #+#    #+#             */
-/*   Updated: 2023/05/24 16:15:28 by njantsch         ###   ########.fr       */
+/*   Updated: 2023/05/29 13:48:20 by njantsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+
+long	ft_atoi_long(char *str)
+{
+	long	res;
+	int		sign;
+
+	res = 0;
+	sign = 1;
+	while (*str == 32 || (*str >= 9 && *str <= 13))
+	{
+		str++;
+	}
+	if (*str == '-' || *str == '+')
+	{
+		if (*str == '-')
+			sign *= -1;
+			str++;
+	}
+	while (*str >= '0' && *str <= '9')
+	{
+		res = res * 10 + *str - '0';
+		str++;
+	}
+	return (res * sign);
+}
 
 void	free_prev_alloc(char **buff)
 {
@@ -51,12 +76,4 @@ void	push(stack *s, int data)
 		return;
 	s->top++;
 	s->items[s->top] = data;
-}
-
-void	pop(stack *s, int *data)
-{
-	if (s->top == -1)
-		return;
-	s->top--;
-	*data = s->items[s->top];
 }

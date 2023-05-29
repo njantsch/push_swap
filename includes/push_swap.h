@@ -6,7 +6,7 @@
 /*   By: njantsch <njantsch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 14:15:25 by njantsch          #+#    #+#             */
-/*   Updated: 2023/05/24 17:55:43 by njantsch         ###   ########.fr       */
+/*   Updated: 2023/05/29 13:48:55 by njantsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ stack	*strct_init_b(stack *s_a);
 int		get_stack_size(char	**numbrs);
 int		get_stack_size_str(char **numbrs);
 
+bool	ft_err_checking(int	ac, char **av);
 bool	ft_checks(int args, char **num);
 bool	ft_dups(char **num);
 bool	ft_not_num(char **num);
@@ -37,9 +38,9 @@ bool	ft_not_int(char **num);
 bool	ft_is_sorted(char **num);
 
 void	free_prev_alloc(char **buff);
+long	ft_atoi_long(char *str);
 
 void	push(stack *s, int data);
-void	pop(stack *s, int *data);
 
 void	sa(stack *s);
 void	sb(stack *s);
@@ -56,6 +57,6 @@ void	rra(stack *s);
 void	rrb(stack *s);
 void	rrr(stack *s_a, stack *s_b);
 
-// void	stack_visualizer(stack *s_a, stack *s_b);
+void	stack_visualizer(stack *s_a, stack *s_b);
 
 #endif

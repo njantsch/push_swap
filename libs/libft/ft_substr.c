@@ -6,7 +6,7 @@
 /*   By: njantsch <njantsch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 17:02:55 by njantsch          #+#    #+#             */
-/*   Updated: 2023/03/31 15:44:03 by njantsch         ###   ########.fr       */
+/*   Updated: 2023/05/29 13:59:36 by njantsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,8 @@
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	int		i;
-	size_t	size;
 	char	*dest;
 
-	i = 0;
-	size = ft_strlen(s) + start;
 	if (!s)
 		return (0);
 	if (start > ft_strlen(s))

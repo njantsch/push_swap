@@ -6,7 +6,7 @@
 /*   By: njantsch <njantsch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 14:12:40 by njantsch          #+#    #+#             */
-/*   Updated: 2023/05/24 17:55:30 by njantsch         ###   ########.fr       */
+/*   Updated: 2023/05/29 13:56:47 by njantsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,7 @@ int	main(int ac, char **av)
 	stack	*s_a;
 	stack	*s_b;
 
-	if (ac < 2)
-		return (1);
-	if (ft_checks(ac, av) == false)
+	if (ft_err_checking(ac, av) == false)
 		return (ft_printf("Error\n"));
 	if (ac > 2)
 		s_a = strct_init_a(av);
@@ -30,37 +28,65 @@ int	main(int ac, char **av)
 	s_b = strct_init_b(s_a);
 	if (!s_b)
 		return (ft_printf("Error creating struct\n"));
+	stack_visualizer(s_a, s_b);
 	free(s_a);
 	free(s_b);
 	return (0);
 }
 
-// void	stack_visualizer(stack *s_a, stack *s_b)
-// {
-// 	int	i;
-// 	int	j;
+bool	ft_err_checking(int	ac, char **av)
+{
+	char	**buff;
+	int		i;
+	int		j;
 
-// 	i = s_a->top;
-// 	j = s_b->top;
-// 	while (i >= 0 || j >= 0)
-// 	{
-// 		if (i == j)
-// 		{
-// 			ft_printf("%d        ", s_a->items[i]);
-// 			ft_printf("%d\n", s_b->items[j]);
-// 			i--;
-// 			j--;
-// 		}
-// 		else if (i > j)
-// 		{
-// 			ft_printf("%d\n", s_a->items[i]);
-// 			i--;
-// 		}
-// 		else if (i < j)
-// 		{
-// 			ft_printf("         %d\n", s_b->items[j]);
-// 			j--;
-// 		}
-// 	}
-// 	ft_printf("a--------b---------\n");
-// }
+	i = 0;
+	j = 1;
+	if (ac < 2)
+		return (false);
+	if (ac > 2)
+	{
+		while (av[i])
+			i++;
+		buff = malloc(sizeof(char *) * i - 1);
+		i = 0;
+		while (av[j])
+			buff[i++] = av[j++];
+	}
+	else
+		buff = ft_split(av[1], ' ');
+	if (ft_checks(ac, buff) == false)
+		return (free_prev_alloc(buff), false);
+	free_prev_alloc(buff);
+	return (true);
+}
+
+void	stack_visualizer(stack *s_a, stack *s_b)
+{
+	int	i;
+	int	j;
+
+	i = s_a->top;
+	j = s_b->top;
+	while (i >= 0 || j >= 0)
+	{
+		if (i == j)
+		{
+			ft_printf("%d        ", s_a->items[i]);
+			ft_printf("%d\n", s_b->items[j]);
+			i--;
+			j--;
+		}
+		else if (i > j)
+		{
+			ft_printf("%d\n", s_a->items[i]);
+			i--;
+		}
+		else if (i < j)
+		{
+			ft_printf("         %d\n", s_b->items[j]);
+			j--;
+		}
+	}
+	ft_printf("a--------b---------\n");
+}
