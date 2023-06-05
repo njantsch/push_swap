@@ -6,7 +6,7 @@
 /*   By: njantsch <njantsch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 14:15:25 by njantsch          #+#    #+#             */
-/*   Updated: 2023/05/29 13:48:55 by njantsch         ###   ########.fr       */
+/*   Updated: 2023/06/05 16:42:56 by njantsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ typedef struct s
 	int	*items;
 	int	size;
 	int	top;
+	int	low;
 }	stack;
 
 stack	*strct_init_a(char **numbrs);
@@ -58,5 +59,14 @@ void	rrb(stack *s);
 void	rrr(stack *s_a, stack *s_b);
 
 void	stack_visualizer(stack *s_a, stack *s_b);
+
+int		quicksort(int *arr, int length);
+
+bool	is_sorted_a(stack *s);
+bool	is_sorted_b(stack *s);
+void	ft_sort(stack *s_a, stack *s_b);
+int		get_mid_point(stack *s, int start, int end);
+void	push_to_b(stack *s_a, stack *s_b);
+void	push_back_to_a(stack *s_a, stack *s_b);
 
 #endif
