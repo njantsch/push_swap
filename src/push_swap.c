@@ -6,7 +6,7 @@
 /*   By: njantsch <njantsch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 14:12:40 by njantsch          #+#    #+#             */
-/*   Updated: 2023/06/05 11:05:32 by njantsch         ###   ########.fr       */
+/*   Updated: 2023/06/09 17:29:58 by njantsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,8 @@ int	main(int ac, char **av)
 	s_b = strct_init_b(s_a);
 	if (!s_b)
 		return (ft_printf("Error creating struct\n"));
-	if (s_a->size <= 100)
-		inser_sort();
-	else
-		quicksort();
-	stack_visualizer(s_a, s_b);
+	ft_sort(s_a, s_b);
+	// stack_visualizer(s_a, s_b);
 	free(s_a);
 	free(s_b);
 	return (0);
@@ -52,16 +49,17 @@ bool	ft_err_checking(int	ac, char **av)
 	{
 		while (av[i])
 			i++;
-		buff = malloc(sizeof(char *) * i - 1);
+		buff = malloc(sizeof(char *) * i);
 		i = 0;
 		while (av[j])
 			buff[i++] = av[j++];
+		buff[i] = NULL;
 	}
 	else
 		buff = ft_split(av[1], ' ');
 	if (ft_checks(ac, buff) == false)
-		return (free_prev_alloc(buff), false);
-	free_prev_alloc(buff);
+		return (free(buff), false);
+	free(buff);
 	return (true);
 }
 

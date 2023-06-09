@@ -3,7 +3,8 @@ CFLAGS = -Wall -Werror -Wextra -g
 NAME = push_swap
 
 SOURCES = ./src/push_swap.c ./src/utils.c ./src/input_checks.c ./src/stack_funcs.c ./src/rotate_both_and_push.c \
-./src/swap_rules.c ./src/rotate_one_rules.c ./algorithm/ft_sort.c ./algorithm/mid_point.c ./algorithm/utils_sort.c
+./src/swap_rules.c ./src/rotate_one_rules.c ./algorithm/ft_sort.c ./algorithm/mid_point.c ./algorithm/utils_sort.c \
+./algorithm/optimizations.c
 
 OBJECTS = $(SOURCES:.c=.o)
 

@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   quicksort.c                                        :+:      :+:    :+:   */
+/*   mid_point.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: njantsch <njantsch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 14:13:26 by njantsch          #+#    #+#             */
-/*   Updated: 2023/06/05 16:05:28 by njantsch         ###   ########.fr       */
+/*   Updated: 2023/06/06 15:23:04 by njantsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-static void	ft_swap(int *a, int *b)
+void	ft_swap(int *a, int *b)
 {
 	int	tmp;
 
@@ -21,7 +21,7 @@ static void	ft_swap(int *a, int *b)
 	*b = tmp;
 }
 
-static int	partition(int *arr, int low, int high)
+int	partition(int *arr, int low, int high)
 {
 	int pValue;
 	int	i;
@@ -34,7 +34,7 @@ static int	partition(int *arr, int low, int high)
 	{
 		if (arr[j] < pValue)
 		{
-			ft_swap(&arr[i], &arr[j])
+			ft_swap(&arr[i], &arr[j]);
 			i++;
 		}
 		j++;
@@ -45,14 +45,14 @@ static int	partition(int *arr, int low, int high)
 
 int	quicksort(int *arr, int length)
 {
-	int	mid_value
+	int	mid_value;
 
 	quicksort_rec(arr, 0, length - 1);
 	mid_value = arr[length / 2];
 	return (mid_value);
 }
 
-static void	quicksort_rec(int *arr, int low, int high)
+void	quicksort_rec(int *arr, int low, int high)
 {
 	int	pIndex;
 

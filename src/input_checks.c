@@ -6,7 +6,7 @@
 /*   By: njantsch <njantsch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 17:01:52 by njantsch          #+#    #+#             */
-/*   Updated: 2023/05/29 16:02:23 by njantsch         ###   ########.fr       */
+/*   Updated: 2023/06/07 12:10:35 by njantsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,9 @@ bool	ft_dups(char **num)
 		len = ft_strlen(num[i]);
 		while (num[j])
 		{
-			if (ft_strncmp(num[i], num[j], len) == 0)
+			if (ft_strlen(num[j]) > len)
+				len = ft_strlen(num[j]);
+			if (ft_strncmp(num[i], num[j], len) == 0 && len != 0)
 				return (false);
 			j++;
 		}
@@ -100,6 +102,7 @@ bool	ft_is_sorted(char **num)
 {
 	int	*nums;
 	int	i;
+	int	j;
 	int	len;
 
 	len = 0;
@@ -107,15 +110,18 @@ bool	ft_is_sorted(char **num)
 		len++;
 	nums = malloc(sizeof(int) * len - 1);
 	i = 0;
-	while (i < len)
+	j = 1;
+	while (j < len)
 	{
 		nums[i] = ft_atoi(num[i]);
-		if (nums[i] > nums[i + 1] && nums[i + 1] != '\0')
+		nums[j] = ft_atoi(num[j]);
+		if (nums[i] > nums[j])
 		{
 			free(nums);
 			return (false);
 		}
 		i++;
+		j++;
 	}
 	free(nums);
 	return (true);
