@@ -6,7 +6,7 @@
 /*   By: njantsch <njantsch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 14:33:14 by njantsch          #+#    #+#             */
-/*   Updated: 2023/06/09 16:02:30 by njantsch         ###   ########.fr       */
+/*   Updated: 2023/06/10 15:19:31 by njantsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,11 @@ stack	*strct_init_a(char **numbrs)
 	s->top = -1;
 	s->size = get_stack_size(numbrs);
 	i = s->size + 1;
+	s->moves1 = 2;
+	s->moves2 = 1;
 	s->items = malloc(sizeof(int) * s->size);
 	if (!s->items)
-	{
-		free(s);
-		return (NULL);
-	}
+		return (free(s), NULL);
 	while (i > 1)
 	{
 		s->top++;
@@ -51,12 +50,11 @@ stack	*strct_init_str_a(char **numbrs)
 	buff = ft_split(numbrs[1], ' ');
 	s->size = get_stack_size_str(buff);
 	i = s->size;
+	s->moves1 = 2;
+	s->moves2 = 1;
 	s->items = malloc(sizeof(int) * s->size);
 	if (!s->items)
-	{
-		free(s);
-		return (NULL);
-	}
+		return (free(s), NULL);
 	while (i > 0)
 	{
 		s->top++;

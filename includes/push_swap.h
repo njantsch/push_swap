@@ -6,7 +6,7 @@
 /*   By: njantsch <njantsch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 14:15:25 by njantsch          #+#    #+#             */
-/*   Updated: 2023/06/09 18:11:31 by njantsch         ###   ########.fr       */
+/*   Updated: 2023/06/11 16:23:58 by njantsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ typedef struct s
 	int	*items;
 	int	size;
 	int	top;
+	int	moves1;
+	int	moves2;
 }	stack;
 
 stack	*strct_init_a(char **numbrs);
@@ -57,9 +59,9 @@ void	rra(stack *s);
 void	rrb(stack *s);
 void	rrr(stack *s_a, stack *s_b);
 
-// void	stack_visualizer(stack *s_a, stack *s_b);
+void	stack_visualizer(stack *s_a, stack *s_b);
 
-int		quicksort(int *arr, int length);
+int		quicksort(int *arr, int length, int values);
 void	quicksort_rec(int *arr, int low, int high);
 void	ft_swap(int *a, int *b);
 int		partition(int *arr, int low, int high);
@@ -68,13 +70,15 @@ bool	is_sorted_a(stack *s);
 bool	is_sorted_b(stack *s);
 bool	is_chunk_finished(stack *s, int pivot);
 bool	ft_smallest(stack *s, int pivot);
-bool	conditions_for_pa(stack *s_b, int pivot, int chunk);
 
 void	ft_sort(stack *s_a, stack *s_b);
 int		get_mid_point(stack *s, int start, int end);
 int		push_to_b(stack *s_a, stack *s_b, int pivot);
 void	push_back_to_a(stack *s_a, stack *s_b, int pivot, int chunk);
+
 void	which_rotate_b(stack *s_b);
 void	which_rotate_a(stack *s_a, int pivot);
+void	sort_three(stack *s);
+void	sort_five(stack *s_a, stack *s_b);
 
 #endif

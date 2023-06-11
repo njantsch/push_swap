@@ -6,7 +6,7 @@
 /*   By: njantsch <njantsch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 14:13:26 by njantsch          #+#    #+#             */
-/*   Updated: 2023/06/06 15:23:04 by njantsch         ###   ########.fr       */
+/*   Updated: 2023/06/11 15:30:03 by njantsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,15 @@ int	partition(int *arr, int low, int high)
 	return (i);
 }
 
-int	quicksort(int *arr, int length)
+int	quicksort(int *arr, int length, int values)
 {
 	int	mid_value;
 
 	quicksort_rec(arr, 0, length - 1);
-	mid_value = arr[length / 2];
+	if (values <= 100)
+		mid_value = arr[length / 4];
+	else
+		mid_value = arr[length / 6];
 	return (mid_value);
 }
 

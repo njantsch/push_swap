@@ -6,7 +6,7 @@
 /*   By: njantsch <njantsch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 14:49:26 by njantsch          #+#    #+#             */
-/*   Updated: 2023/06/09 18:11:18 by njantsch         ###   ########.fr       */
+/*   Updated: 2023/06/11 16:18:13 by njantsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,37 +40,88 @@ void	which_rotate_b(stack *s_b)
 void	which_rotate_a(stack *s_a, int pivot)
 {
 	int	i;
-	int	moves1;
-	int	moves2;
-	int	count;
 
 	i = 0;
-	moves1 = 0;
-	moves2 = 0;
 	while (i < s_a->top / 2)
 	{
 		if (s_a->items[i] < pivot)
-		{
-			moves1 = i;
 			break ;
-		}
+		s_a->moves1++;
 		i++;
 	}
 	i = s_a->top;
-	count = 0;
 	while (i > s_a->top / 2)
 	{
 		if (s_a->items[i] < pivot)
-		{
-			moves2 = count;
 			break ;
-		}
-		count++;
+		s_a->moves2++;
 		i--;
 	}
-	if ((moves2 < moves1 && moves2 != 0) || moves1 == 0 \
-	|| moves1 == moves2)
+	if (s_a->moves2 < s_a->moves1 || s_a->moves1 == s_a->moves2)
 		ra(s_a);
-	if ((moves1 < moves2 && moves1 != 0) || moves2 == 0)
+	if (s_a->moves1 < s_a->moves2)
 		rra(s_a);
+}
+
+void	sort_three(stack *s)
+{
+	while (is_sorted_a(s) == false)
+	{
+		if (s->items[0] > s->items[2] && s->items[2] > s->items[1])
+			sa(s);
+		else if (s->items[2] > s->items[1] && s->items[1] > s->items[0])
+		{
+			sa(s);
+			rra(s);
+		}
+		else if (s->items[2] > s->items[0] && s->items[0] > s->items[1])
+			ra(s);
+		else if (s->items[1] > s->items[0] && s->items[0] > s->items[2])
+		{
+			sa(s);
+			ra(s);
+		}
+		else
+			rra(s);
+	}
+}
+
+void	sort_five(stack *s_a, stack *s_b)
+{
+	if (s_a->top == 4)
+	{
+		while (is_chunk_finished(s_a, s_a->items[s_a->top]) == false)
+		{
+			if (is_chunk_finished(s_a, s_a->items[0]) == true
+			|| is_chunk_finished(s_a, s_a->items[1]) == true)
+				rra(s_a);
+			else
+				ra(s_a);
+			// stack_visualizer(s_a, s_b);
+		}
+		pb(s_a, s_b);
+		while (ft_smallest(s_a, s_a->items[s_a->top]) == false)
+		{
+			if (ft_smallest(s_a, s_a->items[0]) == true
+			|| ft_smallest(s_a, s_a->items[1]) == true)
+				rra(s_a);
+			else
+				ra(s_a);
+		}
+		pb(s_a, s_b);
+		sort_three(s_a);
+		pa(s_a, s_b);
+		ra(s_a);
+		pa(s_a, s_b);
+	}
+	else if (s_a->top == 3)
+	{
+		while (is_chunk_finished(s_a, s_a->items[s_a->top]) == false)
+			ra(s_a);
+		pb(s_a, s_b);
+		sort_three(s_a);
+		pa(s_a, s_b);
+	}
+	else if (s_a->top == 2)
+		sort_three(s_a);
 }

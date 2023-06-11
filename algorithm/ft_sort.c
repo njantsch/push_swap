@@ -6,7 +6,7 @@
 /*   By: njantsch <njantsch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 14:47:34 by njantsch          #+#    #+#             */
-/*   Updated: 2023/06/09 18:12:06 by njantsch         ###   ########.fr       */
+/*   Updated: 2023/06/11 16:23:33 by njantsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	get_mid_point(stack *s, int start, int end)
 	i = 0;
 	while (start <= end)
 		arr[i++] = s->items[start++];
-	mid_point = quicksort(arr, len);
+	mid_point = quicksort(arr, len, s->size);
 	free(arr);
 	return (mid_point);
 }
@@ -41,12 +41,17 @@ void	ft_sort(stack *s_a, stack *s_b)
 	i = 0;
 	while (s_a->top > 1 && s_a->top != -1)
 	{
+		if (s_a->top < 5)
+			sort_five(s_a, s_b);
 		if (is_sorted_a(s_a) == true)
 			break ;
 		pivot = get_mid_point(s_a, 0, s_a->top);
 		chunks[i] = push_to_b(s_a, s_b, pivot);
 		i++;
+		// ft_printf("chunks createt: %d\n", i);
 	}
+	// stack_visualizer(s_a, s_b);
+	// exit(0);
 	while (s_b->top > -1 && i >= 0)
 	{
 		if (is_sorted_a(s_a) == true && s_b->top == -1)
@@ -66,17 +71,18 @@ int	push_to_b(stack *s_a, stack *s_b, int pivot)
 	chunk_len = 0;
 	while (is_chunk_finished(s_a, pivot) == false)
 	{
-		while (s_a->items[s_a->top] < pivot)
+		if (s_a->items[s_a->top] < pivot)
 		{
 			pb(s_a, s_b);
 			chunk_len++;
 		}
-		if (s_a->items[s_a->top - 1] < pivot)
+		else if (s_a->items[s_a->top - 1] < pivot)
 			sa(s_a);
 		else if (s_a->items[0] < pivot)
 			rra(s_a);
 		else
 			which_rotate_a(s_a, pivot);
+		// stack_visualizer(s_a, s_b);
 	}
 	if (s_a->items[1] > s_a->items[0])
 			sa(s_a);
@@ -89,7 +95,11 @@ void	push_back_to_a(stack *s_a, stack *s_b, int pivot, int chunk)
 	{
 		if (ft_smallest(s_b, pivot) == true && chunk > 2)
 			pivot = get_mid_point(s_b, s_b->top - (chunk - 1), s_b->top);
-		if (conditions_for_pa(s_b, pivot, chunk) == true)
+		if ((s_b->items[s_b->top] > pivot \
+		&& ft_smallest(s_b, s_b->items[s_b->top]) == true) \
+		|| is_sorted_b(s_b) == true || (chunk == 1 && \
+		ft_smallest(s_b, s_b->items[s_b->top]) == true) \
+		|| (s_b->items[s_b->top] == pivot && ft_smallest(s_b, pivot) == true))
 		{
 			pa(s_a, s_b);
 			chunk--;
