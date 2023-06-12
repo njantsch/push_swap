@@ -6,7 +6,7 @@
 /*   By: njantsch <njantsch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 14:47:34 by njantsch          #+#    #+#             */
-/*   Updated: 2023/06/11 16:23:33 by njantsch         ###   ########.fr       */
+/*   Updated: 2023/06/12 16:06:52 by njantsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	get_mid_point(stack *s, int start, int end)
 	i = 0;
 	while (start <= end)
 		arr[i++] = s->items[start++];
-	mid_point = quicksort(arr, len, s->size);
+	mid_point = quicksort(s, arr, len);
 	free(arr);
 	return (mid_point);
 }
@@ -46,7 +46,7 @@ void	ft_sort(stack *s_a, stack *s_b)
 		if (is_sorted_a(s_a) == true)
 			break ;
 		pivot = get_mid_point(s_a, 0, s_a->top);
-		chunks[i] = push_to_b(s_a, s_b, pivot);
+		chunks[i] = push_to_b(s_a, s_b, pivot, s_a->median);
 		i++;
 		// ft_printf("chunks createt: %d\n", i);
 	}
@@ -64,27 +64,30 @@ void	ft_sort(stack *s_a, stack *s_b)
 	}
 }
 
-int	push_to_b(stack *s_a, stack *s_b, int pivot)
+int	push_to_b(stack *s_a, stack *s_b, int pivot, int median)
 {
 	int	chunk_len;
 
 	chunk_len = 0;
 	while (is_chunk_finished(s_a, pivot) == false)
 	{
-		if (s_a->items[s_a->top] < pivot)
+		if (s_a->items[s_a->top] <= median)
+		{
+			pb(s_a, s_b);
+			rb(s_b);
+			chunk_len++;
+		}
+		else if (s_a->items[s_a->top] < pivot && s_a->items[s_a->top] > median)
 		{
 			pb(s_a, s_b);
 			chunk_len++;
 		}
-		else if (s_a->items[s_a->top - 1] < pivot)
-			sa(s_a);
-		else if (s_a->items[0] < pivot)
-			rra(s_a);
 		else
 			which_rotate_a(s_a, pivot);
+		// ft_printf("pivot: %d     median: %d\n", pivot, median);
 		// stack_visualizer(s_a, s_b);
 	}
-	if (s_a->items[1] > s_a->items[0])
+	if (s_a->items[1] > s_a->items[0] && s_a->top == 1)
 			sa(s_a);
 	return (chunk_len);
 }
@@ -107,9 +110,9 @@ void	push_back_to_a(stack *s_a, stack *s_b, int pivot, int chunk)
 		else if (s_b->items[s_b->top] < s_b->items[s_b->top - 1] \
 		&& ft_smallest(s_b, s_b->items[s_b->top - 1]) == true)
 			sb(s_b);
-		else if (chunk == 1 && s_b->items[0] >= pivot)
-			rrb(s_b);
 		else
 			which_rotate_b(s_b);
+		// ft_printf("pivot: %d    chunk: %d\n", pivot, chunk);
+		// stack_visualizer(s_a, s_b);
 	}
 }

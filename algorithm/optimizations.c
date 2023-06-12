@@ -6,7 +6,7 @@
 /*   By: njantsch <njantsch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 14:49:26 by njantsch          #+#    #+#             */
-/*   Updated: 2023/06/11 16:18:13 by njantsch         ###   ########.fr       */
+/*   Updated: 2023/06/12 16:07:00 by njantsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ void	which_rotate_a(stack *s_a, int pivot)
 	int	i;
 
 	i = 0;
+	s_a->moves1 = 2;
+	s_a->moves2 = 1;
 	while (i < s_a->top / 2)
 	{
 		if (s_a->items[i] < pivot)
@@ -97,7 +99,6 @@ void	sort_five(stack *s_a, stack *s_b)
 				rra(s_a);
 			else
 				ra(s_a);
-			// stack_visualizer(s_a, s_b);
 		}
 		pb(s_a, s_b);
 		while (ft_smallest(s_a, s_a->items[s_a->top]) == false)
