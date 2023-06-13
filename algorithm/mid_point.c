@@ -6,7 +6,7 @@
 /*   By: njantsch <njantsch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 14:13:26 by njantsch          #+#    #+#             */
-/*   Updated: 2023/06/12 15:53:53 by njantsch         ###   ########.fr       */
+/*   Updated: 2023/06/13 16:44:02 by njantsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,13 +48,12 @@ int	quicksort(stack *s, int *arr, int length)
 	int	mid_value;
 
 	quicksort_rec(arr, 0, length - 1);
-	// ft_printf("length: %d\n", length);
-	if (length <= 50)
+	if (length <= 25)
 	{
 		mid_value = arr[length / 3];
 		s->median = arr[length / 6];
 	}
-	else if (length <= 100)
+	else if (length <= 120)
 	{
 		mid_value = arr[length / 4];
 		s->median = arr[length / 8];

@@ -6,7 +6,7 @@
 /*   By: njantsch <njantsch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 14:15:25 by njantsch          #+#    #+#             */
-/*   Updated: 2023/06/12 16:01:59 by njantsch         ###   ########.fr       */
+/*   Updated: 2023/06/13 12:12:33 by njantsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,6 @@ void	which_rotate_b(stack *s_b);
 void	which_rotate_a(stack *s_a, int pivot);
 void	sort_three(stack *s);
 void	sort_five(stack *s_a, stack *s_b);
-bool	check_rule(stack *s_a, int pivot);
+bool	next_rotate(stack *s_a, int pivot);
 
 #endif

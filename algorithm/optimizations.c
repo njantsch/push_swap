@@ -6,7 +6,7 @@
 /*   By: njantsch <njantsch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 14:49:26 by njantsch          #+#    #+#             */
-/*   Updated: 2023/06/12 16:07:00 by njantsch         ###   ########.fr       */
+/*   Updated: 2023/06/13 12:12:19 by njantsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,4 +125,31 @@ void	sort_five(stack *s_a, stack *s_b)
 	}
 	else if (s_a->top == 2)
 		sort_three(s_a);
+}
+
+bool	next_rotate(stack *s_a, int pivot)
+{
+	int	i;
+
+	i = 0;
+	s_a->moves1 = 2;
+	s_a->moves2 = 1;
+	while (i < s_a->top / 2)
+	{
+		if (s_a->items[i] < pivot)
+			break ;
+		s_a->moves1++;
+		i++;
+	}
+	i = s_a->top;
+	while (i > s_a->top / 2)
+	{
+		if (s_a->items[i] < pivot)
+			break ;
+		s_a->moves2++;
+		i--;
+	}
+	if (s_a->moves2 < s_a->moves1 || s_a->moves1 == s_a->moves2)
+		return (true);
+	return (false);
 }

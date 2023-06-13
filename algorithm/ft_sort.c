@@ -6,7 +6,7 @@
 /*   By: njantsch <njantsch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 14:47:34 by njantsch          #+#    #+#             */
-/*   Updated: 2023/06/12 16:06:52 by njantsch         ###   ########.fr       */
+/*   Updated: 2023/06/13 16:35:54 by njantsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,7 @@ void	ft_sort(stack *s_a, stack *s_b)
 		pivot = get_mid_point(s_a, 0, s_a->top);
 		chunks[i] = push_to_b(s_a, s_b, pivot, s_a->median);
 		i++;
-		// ft_printf("chunks createt: %d\n", i);
 	}
-	// stack_visualizer(s_a, s_b);
-	// exit(0);
 	while (s_b->top > -1 && i >= 0)
 	{
 		if (is_sorted_a(s_a) == true && s_b->top == -1)
@@ -74,7 +71,10 @@ int	push_to_b(stack *s_a, stack *s_b, int pivot, int median)
 		if (s_a->items[s_a->top] <= median)
 		{
 			pb(s_a, s_b);
-			rb(s_b);
+			if (next_rotate(s_a, pivot) == true)
+				rr(s_a, s_b);
+			else
+				rb(s_b);
 			chunk_len++;
 		}
 		else if (s_a->items[s_a->top] < pivot && s_a->items[s_a->top] > median)
@@ -84,8 +84,6 @@ int	push_to_b(stack *s_a, stack *s_b, int pivot, int median)
 		}
 		else
 			which_rotate_a(s_a, pivot);
-		// ft_printf("pivot: %d     median: %d\n", pivot, median);
-		// stack_visualizer(s_a, s_b);
 	}
 	if (s_a->items[1] > s_a->items[0] && s_a->top == 1)
 			sa(s_a);
@@ -112,7 +110,5 @@ void	push_back_to_a(stack *s_a, stack *s_b, int pivot, int chunk)
 			sb(s_b);
 		else
 			which_rotate_b(s_b);
-		// ft_printf("pivot: %d    chunk: %d\n", pivot, chunk);
-		// stack_visualizer(s_a, s_b);
 	}
 }
