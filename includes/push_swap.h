@@ -6,7 +6,7 @@
 /*   By: njantsch <njantsch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 14:15:25 by njantsch          #+#    #+#             */
-/*   Updated: 2023/06/13 12:12:33 by njantsch         ###   ########.fr       */
+/*   Updated: 2023/06/16 14:38:50 by njantsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ bool	ft_not_int(char **num);
 bool	ft_is_sorted(char **num);
 
 void	free_prev_alloc(char **buff);
-long	ft_atoi_long(char *str);
+long	ft_atol(char *str);
 
 void	push(stack *s, int data);
 
@@ -70,17 +70,19 @@ int		partition(int *arr, int low, int high);
 bool	is_sorted_a(stack *s);
 bool	is_sorted_b(stack *s);
 bool	is_chunk_finished(stack *s, int pivot);
-bool	ft_smallest(stack *s, int pivot);
+bool	ft_biggest(stack *s, int item);
+bool	ft_second_biggest(stack *s, int item);
 
 void	ft_sort(stack *s_a, stack *s_b);
 int		get_mid_point(stack *s, int start, int end);
-int		push_to_b(stack *s_a, stack *s_b, int pivot, int median);
-void	push_back_to_a(stack *s_a, stack *s_b, int pivot, int chunk);
+void	push_to_b(stack *s_a, stack *s_b, int pivot);
+void	push_back_to_a(stack *s_a, stack *s_b, int guard);
 
-void	which_rotate_b(stack *s_b);
+void	which_rotate_b(stack *s_b, int guard);
 void	which_rotate_a(stack *s_a, int pivot);
 void	sort_three(stack *s);
 void	sort_five(stack *s_a, stack *s_b);
 bool	next_rotate(stack *s_a, int pivot);
+void	next_swap(stack *s_a, stack *s_b, int guard);
 
 #endif

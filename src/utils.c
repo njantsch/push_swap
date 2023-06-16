@@ -6,13 +6,13 @@
 /*   By: njantsch <njantsch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 14:32:11 by njantsch          #+#    #+#             */
-/*   Updated: 2023/06/06 16:38:22 by njantsch         ###   ########.fr       */
+/*   Updated: 2023/06/14 14:33:11 by njantsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-long	ft_atoi_long(char *str)
+long	ft_atol(char *str)
 {
 	long	res;
 	int		sign;

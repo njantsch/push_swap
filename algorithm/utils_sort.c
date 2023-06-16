@@ -6,7 +6,7 @@
 /*   By: njantsch <njantsch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 11:44:26 by njantsch          #+#    #+#             */
-/*   Updated: 2023/06/11 16:23:47 by njantsch         ###   ########.fr       */
+/*   Updated: 2023/06/15 16:20:01 by njantsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,16 +58,45 @@ bool	is_chunk_finished(stack *s, int pivot)
 	return (true);
 }
 
-bool	ft_smallest(stack *s, int pivot)
+bool	ft_biggest(stack *s, int item)
 {
 	int	i;
 
 	i = 0;
 	while (i <= s->top)
 	{
-		if (s->items[i] > pivot)
+		if (s->items[i] > item)
 			return (false);
 		i++;
 	}
 	return (true);
+}
+
+bool	ft_second_biggest(stack *s, int item)
+{
+	int	i;
+	int	biggest;
+	int	second;
+
+	i = 0;
+	biggest = 0;
+	while (i <= s->top)
+	{
+		if (s->items[i] > biggest)
+			biggest = s->items[i];
+		i++;
+	}
+	i = 0;
+	second = 0;
+	while (i <= s->top)
+	{
+		if (s->items[i] == biggest)
+			i++;
+		if (s->items[i] > second)
+			second = s->items[i];
+		i++;
+	}
+	if (item == second)
+		return (true);
+	return (false);
 }

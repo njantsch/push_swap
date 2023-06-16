@@ -6,7 +6,7 @@
 /*   By: njantsch <njantsch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 17:01:52 by njantsch          #+#    #+#             */
-/*   Updated: 2023/06/07 12:10:35 by njantsch         ###   ########.fr       */
+/*   Updated: 2023/06/14 14:33:33 by njantsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ bool	ft_not_int(char **num)
 	i = 0;
 	while (i < len)
 	{
-		nums[i] = ft_atoi_long(num[i]);
+		nums[i] = ft_atol(num[i]);
 		if (nums[i] > INT_MAX || nums[i] < INT_MIN)
 		{
 			free(nums);
