@@ -6,7 +6,7 @@
 /*   By: njantsch <njantsch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 14:13:26 by njantsch          #+#    #+#             */
-/*   Updated: 2023/06/16 15:46:54 by njantsch         ###   ########.fr       */
+/*   Updated: 2023/06/19 12:33:18 by njantsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,16 +23,16 @@ void	ft_swap(int *a, int *b)
 
 int	partition(int *arr, int low, int high)
 {
-	int pValue;
+	int	pivot_value;
 	int	i;
 	int	j;
 
-	pValue = arr[high];
+	pivot_value = arr[high];
 	i = low;
 	j = low;
 	while (j < high)
 	{
-		if (arr[j] < pValue)
+		if (arr[j] < pivot_value)
 		{
 			ft_swap(&arr[i], &arr[j]);
 			i++;
@@ -43,7 +43,7 @@ int	partition(int *arr, int low, int high)
 	return (i);
 }
 
-int	quicksort(stack *s, int *arr, int length)
+int	quicksort(t_stack *s, int *arr, int length)
 {
 	int	mid_value;
 
@@ -68,12 +68,12 @@ int	quicksort(stack *s, int *arr, int length)
 
 void	quicksort_rec(int *arr, int low, int high)
 {
-	int	pIndex;
+	int	pivot_index;
 
 	if (low < high)
 	{
-		pIndex = partition(arr, low, high);
-		quicksort_rec(arr, low, pIndex - 1);
-		quicksort_rec(arr, pIndex + 1, high);
+		pivot_index = partition(arr, low, high);
+		quicksort_rec(arr, low, pivot_index - 1);
+		quicksort_rec(arr, pivot_index + 1, high);
 	}
 }

@@ -6,13 +6,13 @@
 /*   By: njantsch <njantsch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 14:32:44 by njantsch          #+#    #+#             */
-/*   Updated: 2023/06/16 16:18:34 by njantsch         ###   ########.fr       */
+/*   Updated: 2023/06/19 12:31:06 by njantsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-bool	next_rotate(stack *s_a, int pivot)
+bool	next_rotate(t_stack *s_a, int pivot)
 {
 	int	i;
 
@@ -39,12 +39,14 @@ bool	next_rotate(stack *s_a, int pivot)
 	return (false);
 }
 
-void	next_swap(stack *s_a, stack *s_b, int guard)
+void	next_swap(t_stack *s_a, t_stack *s_b, int guard)
 {
 	if (s_a->items[s_a->top] > s_a->items[s_a->top - 1])
 	{
-		if ((ft_biggest(s_b, s_b->items[s_b->top - 1]) == true && s_b->top != 0) || \
-		(ft_second_biggest(s_b, s_b->items[s_b->top - 1]) == true && guard == 0))
+		if ((ft_biggest(s_b, s_b->items[s_b->top - 1]) == true && \
+		s_b->top != 0) || \
+		(ft_second_biggest(s_b, s_b->items[s_b->top - 1]) == true && \
+		guard == 0))
 			ss(s_a, s_b);
 		else
 			sa(s_a);
@@ -57,4 +59,3 @@ void	next_swap(stack *s_a, stack *s_b, int guard)
 	else
 		return ;
 }
-

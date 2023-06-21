@@ -6,7 +6,7 @@
 /*   By: njantsch <njantsch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 14:32:11 by njantsch          #+#    #+#             */
-/*   Updated: 2023/06/14 14:33:11 by njantsch         ###   ########.fr       */
+/*   Updated: 2023/06/19 13:30:52 by njantsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,10 +70,10 @@ int	get_stack_size_str(char **numbrs)
 	return (i);
 }
 
-void	push(stack *s, int data)
+void	push(t_stack *s, int data)
 {
 	if (s->top == s->size - 1)
-		return;
+		return ;
 	s->top++;
 	s->items[s->top] = data;
 }

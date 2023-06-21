@@ -1,44 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: njantsch <njantsch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/22 14:12:40 by njantsch          #+#    #+#             */
-/*   Updated: 2023/06/21 13:51:03 by njantsch         ###   ########.fr       */
+/*   Created: 2023/06/20 18:05:04 by njantsch          #+#    #+#             */
+/*   Updated: 2023/06/21 14:28:56 by njantsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int	main(int ac, char **av)
+void	term_strct_bonus(t_stack *s_a, t_stack *s_b)
 {
-	t_stack	*s_a;
-	t_stack	*s_b;
-
-	if (ac < 2)
-		return (0);
-	if (ft_err_checking(ac, av) == false)
-		return (write(2, "Error\n", 6));
-	if (ac > 2)
-		s_a = strct_init_a(av);
-	else
-		s_a = strct_init_str_a(av);
-	if (!s_a)
-		return (ft_printf("Error creating struct\n"));
-	s_b = strct_init_b(s_a);
-	if (!s_b)
-	{
-		free(s_a->items);
-		free(s_a);
-		return (ft_printf("Error creating struct\n"));
-	}
-	if (is_sorted_a(s_a) == true)
-		return (terminate_strcts(s_a, s_b), 0);
-	ft_sort(s_a, s_b);
-	terminate_strcts(s_a, s_b);
-	return (0);
+	free(s_a->items);
+	free(s_b->items);
+	free(s_a);
+	free(s_b);
 }
 
 bool	ft_err_checking(int ac, char **av)
@@ -67,12 +46,4 @@ bool	ft_err_checking(int ac, char **av)
 	if (ft_checks(ac, buff) == false)
 		return (free_prev_alloc(buff), false);
 	return (free_prev_alloc(buff), true);
-}
-
-void	terminate_strcts(t_stack *s_a, t_stack *s_b)
-{
-	free(s_a->items);
-	free(s_b->items);
-	free(s_a);
-	free(s_b);
 }

@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rotate_one_rules.c                                 :+:      :+:    :+:   */
+/*   rotate_one_rules_bonus.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: njantsch <njantsch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 16:59:48 by njantsch          #+#    #+#             */
-/*   Updated: 2023/06/19 12:25:10 by njantsch         ###   ########.fr       */
+/*   Updated: 2023/06/20 14:04:11 by njantsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../../includes/push_swap.h"
 
-void	ra(t_stack *s)
+void	ra_bonus(t_stack *s)
 {
 	int	tmp;
 	int	i;
@@ -27,10 +27,9 @@ void	ra(t_stack *s)
 		i--;
 	}
 	s->items[0] = tmp;
-	ft_printf("ra\n");
 }
 
-void	rb(t_stack *s)
+void	rb_bonus(t_stack *s)
 {
 	int	tmp;
 	int	i;
@@ -45,10 +44,9 @@ void	rb(t_stack *s)
 		i--;
 	}
 	s->items[0] = tmp;
-	ft_printf("rb\n");
 }
 
-void	rra(t_stack *s)
+void	rra_bonus(t_stack *s)
 {
 	int	tmp;
 	int	i;
@@ -63,10 +61,9 @@ void	rra(t_stack *s)
 		i++;
 	}
 	s->items[s->top] = tmp;
-	ft_printf("rra\n");
 }
 
-void	rrb(t_stack *s)
+void	rrb_bonus(t_stack *s)
 {
 	int	tmp;
 	int	i;
@@ -81,5 +78,4 @@ void	rrb(t_stack *s)
 		i++;
 	}
 	s->items[s->top] = tmp;
-	ft_printf("rrb\n");
 }

@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap_rules.c                                       :+:      :+:    :+:   */
+/*   swap_rules_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: njantsch <njantsch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 19:17:47 by njantsch          #+#    #+#             */
-/*   Updated: 2023/06/19 12:24:09 by njantsch         ###   ########.fr       */
+/*   Updated: 2023/06/20 14:04:59 by njantsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../../includes/push_swap.h"
 
-void	sa(t_stack *s)
+void	sa_bonus(t_stack *s)
 {
 	int	tmp;
 
@@ -21,10 +21,9 @@ void	sa(t_stack *s)
 	tmp = s->items[s->top];
 	s->items[s->top] = s->items[s->top - 1];
 	s->items[s->top - 1] = tmp;
-	ft_printf("sa\n");
 }
 
-void	sb(t_stack *s)
+void	sb_bonus(t_stack *s)
 {
 	int	tmp;
 
@@ -33,10 +32,9 @@ void	sb(t_stack *s)
 	tmp = s->items[s->top];
 	s->items[s->top] = s->items[s->top - 1];
 	s->items[s->top - 1] = tmp;
-	ft_printf("sb\n");
 }
 
-void	ss(t_stack *s_a, t_stack *s_b)
+void	ss_bonus(t_stack *s_a, t_stack *s_b)
 {
 	int	tmp;
 
@@ -48,5 +46,4 @@ void	ss(t_stack *s_a, t_stack *s_b)
 	tmp = s_b->items[s_b->top];
 	s_b->items[s_b->top] = s_b->items[s_b->top - 1];
 	s_b->items[s_b->top - 1] = tmp;
-	ft_printf("ss\n");
 }

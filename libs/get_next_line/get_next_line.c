@@ -6,7 +6,7 @@
 /*   By: njantsch <njantsch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 12:57:29 by njantsch          #+#    #+#             */
-/*   Updated: 2023/05/05 17:22:03 by njantsch         ###   ########.fr       */
+/*   Updated: 2023/06/21 13:25:15 by njantsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ char	*buff_trim(char *buffer)
 		free(buffer);
 		return (NULL);
 	}
-	new = ft_calloc((ft_strlen(buffer) + 1) - i, sizeof(char));
+	new = ft_calloc((ft_strlen_gnl(buffer) + 1) - i, sizeof(char));
 	if (!new)
 		return (NULL);
 	i++;
@@ -88,17 +88,16 @@ char	*read_loop(int fd, char *buffer)
 	return (buffer);
 }
 
-char	*get_next_line(int fd)
+char	*get_next_line(int fd, char **next_line)
 {
 	static char	*buffer;
-	char		*line;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	buffer = read_loop(fd, buffer);
 	if (!buffer)
 		return (free(buffer), NULL);
-	line = get_line(buffer);
+	*next_line = get_line(buffer);
 	buffer = buff_trim(buffer);
-	return (line);
+	return (buffer);
 }

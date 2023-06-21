@@ -6,13 +6,13 @@
 /*   By: njantsch <njantsch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 14:33:32 by njantsch          #+#    #+#             */
-/*   Updated: 2023/05/05 17:21:50 by njantsch         ###   ########.fr       */
+/*   Updated: 2023/06/20 13:20:12 by njantsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-size_t	ft_strlen(const char *s)
+size_t	ft_strlen_gnl(const char *s)
 {
 	int	i;
 
@@ -75,7 +75,7 @@ char	*ft_strjoin_free(char *s1, char *s2)
 
 	i = 0;
 	j = 0;
-	res = ft_calloc(ft_strlen(s1) + ft_strlen(s2) + 1, sizeof(char));
+	res = ft_calloc(ft_strlen_gnl(s1) + ft_strlen_gnl(s2) + 1, sizeof(char));
 	if (!res)
 		return (free(s1), NULL);
 	while (s1 && s1[i])

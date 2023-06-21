@@ -6,7 +6,7 @@
 /*   By: njantsch <njantsch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 13:12:32 by njantsch          #+#    #+#             */
-/*   Updated: 2023/05/05 17:22:10 by njantsch         ###   ########.fr       */
+/*   Updated: 2023/06/21 13:21:43 by njantsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@
 # include <unistd.h>
 # include <stdlib.h>
 
-char	*get_next_line(int fd);
+char	*get_next_line(int fd, char **next_line);
 void	*ft_calloc(size_t count, size_t size);
 void	ft_bzero(void *s, size_t n);
-size_t	ft_strlen(const char *s);
+size_t	ft_strlen_gnl(const char *s);
 char	*ft_strjoin_free(char *s1, char *s2);
 int		check_new_line(char *buffer);
 

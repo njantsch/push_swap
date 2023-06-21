@@ -1,16 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   input_checks.c                                     :+:      :+:    :+:   */
+/*   err_handling.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: njantsch <njantsch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/22 17:01:52 by njantsch          #+#    #+#             */
-/*   Updated: 2023/06/20 19:25:18 by njantsch         ###   ########.fr       */
+/*   Created: 2023/06/19 16:22:49 by njantsch          #+#    #+#             */
+/*   Updated: 2023/06/21 14:22:37 by njantsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+
+bool	rule_err_check(char *line)
+{
+	if (ft_strlen(line) > 4)
+		return (false);
+	if (ft_strncmp(line, "ra\n", 3) == 0
+		|| ft_strncmp(line, "rb\n", 3) == 0
+		|| ft_strncmp(line, "rr\n", 3) == 0
+		|| ft_strncmp(line, "rra\n", 4) == 0
+		|| ft_strncmp(line, "rrb\n", 4) == 0
+		|| ft_strncmp(line, "rrr\n", 4) == 0
+		|| ft_strncmp(line, "sa\n", 3) == 0
+		|| ft_strncmp(line, "sb\n", 3) == 0
+		|| ft_strncmp(line, "pa\n", 3) == 0
+		|| ft_strncmp(line, "pb\n", 3) == 0
+		|| ft_strncmp(line, "ss\n", 3) == 0)
+		return (true);
+	return (false);
+}
 
 bool	ft_checks(int args, char **num)
 {

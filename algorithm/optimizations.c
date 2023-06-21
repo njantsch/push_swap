@@ -6,13 +6,13 @@
 /*   By: njantsch <njantsch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 14:49:26 by njantsch          #+#    #+#             */
-/*   Updated: 2023/06/16 16:10:33 by njantsch         ###   ########.fr       */
+/*   Updated: 2023/06/19 13:30:04 by njantsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	which_rotate_b(stack *s_b, int guard)
+void	which_rotate_b(t_stack *s_b, int guard)
 {
 	int	i;
 
@@ -41,7 +41,7 @@ void	which_rotate_b(stack *s_b, int guard)
 	}
 }
 
-void	which_rotate_a(stack *s_a, int pivot)
+void	which_rotate_a(t_stack *s_a, int pivot)
 {
 	int	i;
 
@@ -69,7 +69,7 @@ void	which_rotate_a(stack *s_a, int pivot)
 		rra(s_a);
 }
 
-void	sort_three(stack *s)
+void	sort_three(t_stack *s)
 {
 	while (is_sorted_a(s) == false)
 	{
@@ -92,28 +92,33 @@ void	sort_three(stack *s)
 	}
 }
 
-void	sort_five(stack *s_a, stack *s_b)
+void	rotate_func(t_stack *s_a, t_stack *s_b)
+{
+	while (is_chunk_finished(s_a, s_a->items[s_a->top]) == false)
+	{
+		if (is_chunk_finished(s_a, s_a->items[0]) == true
+			|| is_chunk_finished(s_a, s_a->items[1]) == true)
+			rra(s_a);
+		else
+			ra(s_a);
+	}
+	pb(s_a, s_b);
+	while (ft_biggest(s_a, s_a->items[s_a->top]) == false)
+	{
+		if (ft_biggest(s_a, s_a->items[0]) == true
+			|| ft_biggest(s_a, s_a->items[1]) == true)
+			rra(s_a);
+		else
+			ra(s_a);
+	}
+	pb(s_a, s_b);
+}
+
+void	sort_five(t_stack *s_a, t_stack *s_b)
 {
 	if (s_a->top == 4)
 	{
-		while (is_chunk_finished(s_a, s_a->items[s_a->top]) == false)
-		{
-			if (is_chunk_finished(s_a, s_a->items[0]) == true
-			|| is_chunk_finished(s_a, s_a->items[1]) == true)
-				rra(s_a);
-			else
-				ra(s_a);
-		}
-		pb(s_a, s_b);
-		while (ft_biggest(s_a, s_a->items[s_a->top]) == false)
-		{
-			if (ft_biggest(s_a, s_a->items[0]) == true
-			|| ft_biggest(s_a, s_a->items[1]) == true)
-				rra(s_a);
-			else
-				ra(s_a);
-		}
-		pb(s_a, s_b);
+		rotate_func(s_a, s_b);
 		sort_three(s_a);
 		pa(s_a, s_b);
 		ra(s_a);

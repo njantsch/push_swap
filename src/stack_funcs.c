@@ -6,18 +6,18 @@
 /*   By: njantsch <njantsch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 14:33:14 by njantsch          #+#    #+#             */
-/*   Updated: 2023/06/12 13:48:58 by njantsch         ###   ########.fr       */
+/*   Updated: 2023/06/20 17:44:32 by njantsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-stack	*strct_init_a(char **numbrs)
+t_stack	*strct_init_a(char **numbrs)
 {
 	int		i;
-	stack	*s;
+	t_stack	*s;
 
-	s = malloc(sizeof(stack));
+	s = malloc(sizeof(t_stack));
 	if (!s)
 		return (NULL);
 	s->top = -1;
@@ -36,13 +36,13 @@ stack	*strct_init_a(char **numbrs)
 	return (s);
 }
 
-stack	*strct_init_str_a(char **numbrs)
+t_stack	*strct_init_str_a(char **numbrs)
 {
 	int		i;
 	char	**buff;
-	stack	*s;
+	t_stack	*s;
 
-	s = malloc(sizeof(stack));
+	s = malloc(sizeof(t_stack));
 	if (!s)
 		return (NULL);
 	s->top = -1;
@@ -63,11 +63,11 @@ stack	*strct_init_str_a(char **numbrs)
 	return (s);
 }
 
-stack	*strct_init_b(stack *s_a)
+t_stack	*strct_init_b(t_stack *s_a)
 {
-	stack *s_b;
+	t_stack	*s_b;
 
-	s_b = malloc(sizeof(stack));
+	s_b = malloc(sizeof(t_stack));
 	if (!s_b)
 		return (NULL);
 	s_b->top = -1;
@@ -79,4 +79,27 @@ stack	*strct_init_b(stack *s_a)
 		return (NULL);
 	}
 	return (s_b);
+}
+
+void	stack_visualizer(t_stack *s_a, t_stack *s_b)
+{
+	int	i;
+	int	j;
+
+	i = s_a->top;
+	j = s_b->top;
+	ft_printf("\n");
+	while (i >= 0 || j >= 0)
+	{
+		if (i == j)
+		{
+			ft_printf("%d        ", s_a->items[i--]);
+			ft_printf("%d\n", s_b->items[j--]);
+		}
+		else if (i > j)
+			ft_printf("%d\n", s_a->items[i--]);
+		else if (i < j)
+			ft_printf("         %d\n", s_b->items[j--]);
+	}
+	ft_printf("a--------b---------\n");
 }

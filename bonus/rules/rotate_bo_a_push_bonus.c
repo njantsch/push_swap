@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rotate_both_and_push.c                             :+:      :+:    :+:   */
+/*   rotate_bo_a_push_bonus.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: njantsch <njantsch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 17:00:13 by njantsch          #+#    #+#             */
-/*   Updated: 2023/06/19 12:24:45 by njantsch         ###   ########.fr       */
+/*   Updated: 2023/06/20 14:04:29 by njantsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../../includes/push_swap.h"
 
-void	rr(t_stack *s_a, t_stack *s_b)
+void	rr_bonus(t_stack *s_a, t_stack *s_b)
 {
 	int	tmp;
 	int	i;
@@ -35,10 +35,9 @@ void	rr(t_stack *s_a, t_stack *s_b)
 		i--;
 	}
 	s_b->items[0] = tmp;
-	ft_printf("rr\n");
 }
 
-void	rrr(t_stack *s_a, t_stack *s_b)
+void	rrr_bonus(t_stack *s_a, t_stack *s_b)
 {
 	int	tmp;
 	int	i;
@@ -61,10 +60,9 @@ void	rrr(t_stack *s_a, t_stack *s_b)
 		i++;
 	}
 	s_b->items[s_b->top] = tmp;
-	ft_printf("rrr\n");
 }
 
-void	pa(t_stack *s_a, t_stack *s_b)
+void	pa_bonus(t_stack *s_a, t_stack *s_b)
 {
 	int	tmp;
 
@@ -73,10 +71,9 @@ void	pa(t_stack *s_a, t_stack *s_b)
 	tmp = s_b->items[s_b->top];
 	s_b->top--;
 	push(s_a, tmp);
-	ft_printf("pa\n");
 }
 
-void	pb(t_stack *s_a, t_stack *s_b)
+void	pb_bonus(t_stack *s_a, t_stack *s_b)
 {
 	int	tmp;
 
@@ -85,5 +82,4 @@ void	pb(t_stack *s_a, t_stack *s_b)
 	tmp = s_a->items[s_a->top];
 	s_a->top--;
 	push(s_b, tmp);
-	ft_printf("pb\n");
 }

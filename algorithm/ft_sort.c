@@ -6,13 +6,13 @@
 /*   By: njantsch <njantsch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 14:47:34 by njantsch          #+#    #+#             */
-/*   Updated: 2023/06/16 16:02:46 by njantsch         ###   ########.fr       */
+/*   Updated: 2023/06/19 15:30:55 by njantsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int	get_mid_point(stack *s, int start, int end)
+int	get_mid_point(t_stack *s, int start, int end)
 {
 	int	mid_point;
 	int	*arr;
@@ -32,7 +32,7 @@ int	get_mid_point(stack *s, int start, int end)
 	return (mid_point);
 }
 
-void	ft_sort(stack *s_a, stack *s_b)
+void	ft_sort(t_stack *s_a, t_stack *s_b)
 {
 	int	pivot;
 	int	guard;
@@ -50,7 +50,7 @@ void	ft_sort(stack *s_a, stack *s_b)
 	push_back_to_a(s_a, s_b, guard);
 }
 
-void	push_to_b(stack *s_a, stack *s_b, int pivot)
+void	push_to_b(t_stack *s_a, t_stack *s_b, int pivot)
 {
 	while (is_chunk_finished(s_a, s_a->median) == false)
 	{
@@ -66,11 +66,11 @@ void	push_to_b(stack *s_a, stack *s_b, int pivot)
 		else if (s_a->items[s_a->top] <= pivot)
 			pb(s_a, s_b);
 		else
-			which_rotate_a(s_a, pivot);
+			ra(s_a);
 	}
 }
 
-void	push_back_to_a(stack *s_a, stack *s_b, int guard)
+void	push_back_to_a(t_stack *s_a, t_stack *s_b, int guard)
 {
 	while (s_b->top > -1)
 	{
@@ -83,7 +83,7 @@ void	push_back_to_a(stack *s_a, stack *s_b, int guard)
 				guard--;
 		}
 		else if (ft_second_biggest(s_b, s_b->items[s_b->top]) == true \
-		&& guard == 0)
+		&& guard == 0 && s_a->top > 5)
 		{
 			pa(s_a, s_b);
 			guard++;
@@ -92,5 +92,5 @@ void	push_back_to_a(stack *s_a, stack *s_b, int guard)
 			which_rotate_b(s_b, guard);
 	}
 	if (s_a->items[s_a->top] > s_a->items[s_a->top - 1])
-			sa(s_a);
+		sa(s_a);
 }

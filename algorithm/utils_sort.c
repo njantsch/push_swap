@@ -6,13 +6,13 @@
 /*   By: njantsch <njantsch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 11:44:26 by njantsch          #+#    #+#             */
-/*   Updated: 2023/06/15 16:20:01 by njantsch         ###   ########.fr       */
+/*   Updated: 2023/06/19 12:28:08 by njantsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-bool	is_sorted_a(stack *s)
+bool	is_sorted_a(t_stack *s)
 {
 	int	i;
 
@@ -28,7 +28,7 @@ bool	is_sorted_a(stack *s)
 	return (true);
 }
 
-bool	is_sorted_b(stack *s)
+bool	is_sorted_b(t_stack *s)
 {
 	int	i;
 
@@ -44,7 +44,7 @@ bool	is_sorted_b(stack *s)
 	return (true);
 }
 
-bool	is_chunk_finished(stack *s, int pivot)
+bool	is_chunk_finished(t_stack *s, int pivot)
 {
 	int	i;
 
@@ -58,7 +58,7 @@ bool	is_chunk_finished(stack *s, int pivot)
 	return (true);
 }
 
-bool	ft_biggest(stack *s, int item)
+bool	ft_biggest(t_stack *s, int item)
 {
 	int	i;
 
@@ -72,7 +72,7 @@ bool	ft_biggest(stack *s, int item)
 	return (true);
 }
 
-bool	ft_second_biggest(stack *s, int item)
+bool	ft_second_biggest(t_stack *s, int item)
 {
 	int	i;
 	int	biggest;
