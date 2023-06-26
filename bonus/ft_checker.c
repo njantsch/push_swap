@@ -6,7 +6,7 @@
 /*   By: njantsch <njantsch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 13:48:19 by njantsch          #+#    #+#             */
-/*   Updated: 2023/06/21 14:28:20 by njantsch         ###   ########.fr       */
+/*   Updated: 2023/06/21 17:16:59 by njantsch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	main(int ac, char **av)
 		return (term_strct_bonus(s_a, s_b), write(2, "Error\n", 6));
 	stack_visualizer(s_a, s_b);
 	ft_printf("Moves: %d\n", s_a->move_counter);
-	if (is_sorted_a(s_a) && s_b->top == -1)
+	if ((is_sorted_a(s_a) && s_b->top == -1) || s_a->size == 1)
 		return (term_strct_bonus(s_a, s_b), ft_printf("OK\n"), 0);
 	ft_printf("KO\n");
 	term_strct_bonus(s_a, s_b);
