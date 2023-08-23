@@ -82,11 +82,11 @@ The core sorting algorithm in the `push_swap` project is a blend of chunking, in
 
 **Moving Elements to Stack B:** Elements are pushed from stack `a` to stack `b` while maintaining the chunk structure. The algorithm strategically rotates and pushes elements based on their values and the pivot value.
 
-**Sorting Small Chunks:** For small chunks, specialized sorting routines (`sort_three` and `sort_five`) are employed. These routines use specific swap and rotation sequences to efficiently sort the elements.
-
 **Pushing Elements Back to Stack A:** After sorting elements in stack `b`, they are pushed back to stack `a`. The algorithm carefully rotates and swaps elements to ensure a smooth transition while maintaining the sorted order.
 
 **Optimal Element Manipulation:** Throughout the process, the algorithm uses helper functions to optimize decisions. For example, the `next_rotate` function calculates optimal rotation directions for efficient pushing and sorting.
+
+**Sorting Small Chunks:** For smaller list of numbers, specialized sorting routines (`sort_three` and `sort_five`) are employed. These routines use specific swap and rotation sequences to efficiently sort the elements.
 
 ### Usage push_swap
 
